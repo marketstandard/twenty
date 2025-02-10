@@ -4,7 +4,8 @@ import { useCallback } from 'react';
 import { triggerUpdateRecordOptimisticEffect } from '@/apollo/optimistic-effect/utils/triggerUpdateRecordOptimisticEffect';
 import { useObjectMetadataItem } from '@/object-metadata/hooks/useObjectMetadataItem';
 import { useObjectMetadataItems } from '@/object-metadata/hooks/useObjectMetadataItems';
-import { useGetRecordFromCacheOrMinimalRecord } from '@/object-record/cache/hooks/useGetRecordFromCacheOrMinimalRecord';
+import { useGetRecordFromCache } from '@/object-record/cache/hooks/useGetRecordFromCache';
+import { getObjectTypename } from '@/object-record/cache/utils/getObjectTypename';
 import { getRecordNodeFromRecord } from '@/object-record/cache/utils/getRecordNodeFromRecord';
 import { updateRecordFromCache } from '@/object-record/cache/utils/updateRecordFromCache';
 import { useDeleteOneRecordMutation } from '@/object-record/hooks/useDeleteOneRecordMutation';
@@ -26,10 +27,9 @@ export const useDeleteOneRecord = ({
     objectNameSingular,
   });
 
-  const getRecordFromCacheOrMinimalRecord =
-    useGetRecordFromCacheOrMinimalRecord({
-      objectNameSingular,
-    });
+  const getRecordFromCache = useGetRecordFromCache({
+    objectNameSingular,
+  });
 
   const { deleteOneRecordMutation } = useDeleteOneRecordMutation({
     objectNameSingular,
@@ -46,10 +46,13 @@ export const useDeleteOneRecord = ({
 
   const deleteOneRecord = useCallback(
     async (idToDelete: string) => {
-      const cachedRecord: ObjectRecord = getRecordFromCacheOrMinimalRecord(
-        idToDelete,
-        apolloClient.cache,
-      );
+      const minimalRecord = {
+        __typename: getObjectTypename(objectMetadataItem.nameSingular),
+        id: idToDelete,
+      };
+      const cachedRecord: ObjectRecord =
+        getRecordFromCache(idToDelete, apolloClient.cache) ?? minimalRecord;
+
       const cachedRecordNode = getRecordNodeFromRecord<ObjectRecord>({
         record: cachedRecord,
         objectMetadataItem,
@@ -69,30 +72,26 @@ export const useDeleteOneRecord = ({
         computeReferences: false,
       });
 
-      if (!isDefined(optimisticRecordNode) || !isDefined(cachedRecordNode)) {
-        throw new Error(
-          'Empty cache encountered when a minimal record should have been used as fallback',
-        );
+      if (isDefined(optimisticRecordNode) && isDefined(cachedRecordNode)) {
+        const recordGqlFields = {
+          deletedAt: true,
+        };
+        updateRecordFromCache({
+          objectMetadataItems,
+          objectMetadataItem,
+          cache: apolloClient.cache,
+          record: computedOptimisticRecord,
+          recordGqlFields,
+        });
+
+        triggerUpdateRecordOptimisticEffect({
+          cache: apolloClient.cache,
+          objectMetadataItem,
+          currentRecord: cachedRecordNode,
+          updatedRecord: optimisticRecordNode,
+          objectMetadataItems,
+        });
       }
-
-      const recordGqlFields = {
-        deletedAt: true,
-      };
-      updateRecordFromCache({
-        objectMetadataItems,
-        objectMetadataItem,
-        cache: apolloClient.cache,
-        record: computedOptimisticRecord,
-        recordGqlFields,
-      });
-
-      triggerUpdateRecordOptimisticEffect({
-        cache: apolloClient.cache,
-        objectMetadataItem,
-        currentRecord: cachedRecordNode,
-        updatedRecord: optimisticRecordNode,
-        objectMetadataItems,
-      });
 
       const deletedRecord = await apolloClient
         .mutate({
@@ -130,6 +129,13 @@ export const useDeleteOneRecord = ({
             recordGqlFields,
           });
 
+          if (
+            !isDefined(optimisticRecordNode) ||
+            !isDefined(cachedRecordNode)
+          ) {
+            throw error;
+          }
+
           triggerUpdateRecordOptimisticEffect({
             cache: apolloClient.cache,
             objectMetadataItem,
@@ -147,7 +153,7 @@ export const useDeleteOneRecord = ({
     [
       apolloClient,
       deleteOneRecordMutation,
-      getRecordFromCacheOrMinimalRecord,
+      getRecordFromCache,
       mutationResponseField,
       objectMetadataItem,
       objectMetadataItems,
