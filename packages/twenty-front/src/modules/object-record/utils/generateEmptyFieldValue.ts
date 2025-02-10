@@ -108,7 +108,10 @@ export const generateEmptyFieldValue = (
       return null;
     }
     default: {
-      return assertUnreachable(fieldMetadataItem.type, "Unhandled FieldMetadataType");
+      return assertUnreachable(
+        fieldMetadataItem.type,
+        'Unhandled FieldMetadataType',
+      );
     }
   }
 };
