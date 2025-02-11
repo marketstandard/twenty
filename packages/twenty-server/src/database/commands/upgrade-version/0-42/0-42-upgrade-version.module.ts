@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { LimitAmountOfViewFieldCommand } from 'src/database/commands/upgrade-version/0-42/0-42-limit-amount-of-view-field';
+import { MigrateRelationsToFieldMetadataCommand } from 'src/database/commands/upgrade-version/0-42/0-42-migrate-relations-to-field-metadata.command';
 import { TypeORMModule } from 'src/database/typeorm/typeorm.module';
 import { Workspace } from 'src/engine/core-modules/workspace/workspace.entity';
 import { DataSourceModule } from 'src/engine/metadata-modules/data-source/data-source.module';
@@ -32,6 +33,7 @@ import { WorkspaceSyncMetadataModule } from 'src/engine/workspace-manager/worksp
     SyncWorkspaceLoggerService,
     SyncWorkspaceMetadataCommand,
     LimitAmountOfViewFieldCommand,
+    MigrateRelationsToFieldMetadataCommand,
   ],
 })
 export class UpgradeTo0_42CommandModule {}
