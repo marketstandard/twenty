@@ -1,5 +1,5 @@
-import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
+import { gql } from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -1090,6 +1090,7 @@ export type Object = {
   createdAt: Scalars['DateTime'];
   dataSourceId: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  duplicateCriteria?: Maybe<Array<Array<Scalars['String']>>>;
   fields: ObjectFieldsConnection;
   icon?: Maybe<Scalars['String']>;
   id: Scalars['UUID'];

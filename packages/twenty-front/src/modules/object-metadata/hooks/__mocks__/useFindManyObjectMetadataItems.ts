@@ -24,6 +24,7 @@ export const query = gql`
           imageIdentifierFieldMetadataId
           shortcut
           isLabelSyncedWithName
+          duplicateCriteria
           indexMetadatas(paging: {first: 100}) {
             edges {
               node {
