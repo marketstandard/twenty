@@ -23,6 +23,7 @@ import { TableRow } from '@/ui/layout/table/components/TableRow';
 import { useIsFeatureEnabled } from '@/workspace/hooks/useIsFeatureEnabled';
 import { useTheme } from '@emotion/react';
 import { FeatureFlagKey, useGetRolesQuery } from '~/generated/graphql';
+import { useNavigateSettings } from '~/hooks/useNavigateSettings';
 import { getSettingsPath } from '~/utils/navigation/getSettingsPath';
 
 const StyledTable = styled(Table)`
@@ -54,8 +55,7 @@ const StyledAvatarGroup = styled.div`
   margin-right: ${({ theme }) => theme.spacing(1)};
 
   > * {
-    border: 2px solid ${({ theme }) => theme.background.primary};
-    margin-left: -8px;
+    margin-left: -5px;
 
     &:first-of-type {
       margin-left: 0;
@@ -83,18 +83,29 @@ const StyledAvatarContainer = styled.div`
   border: 0px;
 `;
 
+const StyledAssignedText = styled.div`
+  color: ${({ theme }) => theme.font.color.primary};
+  font-size: ${({ theme }) => theme.font.size.md};
+`;
+
 export const SettingsRoles = () => {
   const { t } = useLingui();
   const isPermissionsEnabled = useIsFeatureEnabled(
     FeatureFlagKey.IsPermissionsEnabled,
   );
   const theme = useTheme();
-
-  const { data: rolesData, loading: isRolesLoading } = useGetRolesQuery();
+  const navigateSettings = useNavigateSettings();
+  const { data: rolesData, loading: rolesLoading } = useGetRolesQuery({
+    fetchPolicy: 'network-only',
+  });
 
   if (!isPermissionsEnabled) {
     return null;
   }
+
+  const handleRoleClick = (roleId: string) => {
+    navigateSettings(SettingsPath.RoleDetail, { roleId });
+  };
 
   return (
     <SubMenuTopBarContainer
@@ -125,9 +136,12 @@ export const SettingsRoles = () => {
                 <TableHeader align={'right'}></TableHeader>
               </TableRow>
             </StyledTableHeaderRow>
-            {!isRolesLoading &&
+            {!rolesLoading &&
               rolesData?.getRoles.map((role) => (
-                <StyledTableRow key={role.id}>
+                <StyledTableRow
+                  key={role.id}
+                  onClick={() => handleRoleClick(role.id)}
+                >
                   <TableCell>
                     <StyledNameCell>
                       <IconUser size={theme.icon.size.md} />
@@ -155,7 +169,7 @@ export const SettingsRoles = () => {
                                     workspaceMember.name.firstName ?? ''
                                   }
                                   type="rounded"
-                                  size="sm"
+                                  size="md"
                                 />
                               </StyledAvatarContainer>
                               <AppTooltip
@@ -169,7 +183,9 @@ export const SettingsRoles = () => {
                             </>
                           ))}
                       </StyledAvatarGroup>
-                      {role.workspaceMembers.length}
+                      <StyledAssignedText>
+                        {role.workspaceMembers.length}
+                      </StyledAssignedText>
                     </StyledAssignedCell>
                   </TableCell>
                   <TableCell align={'right'}>

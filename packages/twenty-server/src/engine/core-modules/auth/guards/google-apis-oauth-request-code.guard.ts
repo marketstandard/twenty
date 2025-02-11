@@ -64,16 +64,16 @@ export class GoogleAPIsOauthRequestCodeGuard extends AuthGuard('google-apis') {
         );
       }
 
-      new GoogleAPIsOauthRequestCodeStrategy(this.environmentService, {});
+      new GoogleAPIsOauthRequestCodeStrategy(this.environmentService);
 
       return (await super.canActivate(context)) as boolean;
     } catch (err) {
       this.guardRedirectService.dispatchErrorFromGuard(
         context,
         err,
-        workspace ?? {
-          subdomain: this.environmentService.get('DEFAULT_SUBDOMAIN'),
-        },
+        this.guardRedirectService.getSubdomainAndCustomDomainFromWorkspace(
+          workspace,
+        ),
       );
 
       return false;

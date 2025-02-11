@@ -2,6 +2,7 @@ import { UseFilters, UseGuards } from '@nestjs/common';
 import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { InjectRepository } from '@nestjs/typeorm';
 
+import { SOURCE_LOCALE } from 'twenty-shared';
 import { Repository } from 'typeorm';
 
 import { ApiKeyTokenInput } from 'src/engine/core-modules/auth/dto/api-key-token.input';
@@ -197,6 +198,7 @@ export class AuthResolver {
     const { userData } = this.authService.formatUserDataPayload(
       {
         email: signUpInput.email,
+        locale: signUpInput.locale,
       },
       existingUser,
     );
@@ -221,7 +223,7 @@ export class AuthResolver {
     await this.emailVerificationService.sendVerificationEmail(
       user.id,
       user.email,
-      workspace.subdomain,
+      workspace,
     );
 
     const loginToken = await this.loginTokenService.generateLoginToken(
@@ -233,7 +235,7 @@ export class AuthResolver {
       loginToken,
       workspace: {
         id: workspace.id,
-        subdomain: workspace.subdomain,
+        workspaceUrls: this.domainManagerService.getWorkspaceUrls(workspace),
       },
     };
   }
@@ -347,7 +349,7 @@ export class AuthResolver {
     return await this.resetPasswordService.sendEmailPasswordResetLink(
       resetToken,
       emailPasswordResetInput.email,
-      context.req.headers['x-locale'] || 'en',
+      context.req.headers['x-locale'] || SOURCE_LOCALE,
     );
   }
 
@@ -365,7 +367,7 @@ export class AuthResolver {
     await this.authService.updatePassword(
       id,
       newPassword,
-      context.req.headers['x-locale'] || 'en',
+      context.req.headers['x-locale'] || SOURCE_LOCALE,
     );
 
     return await this.resetPasswordService.invalidatePasswordResetToken(id);
