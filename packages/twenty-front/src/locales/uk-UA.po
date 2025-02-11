@@ -598,53 +598,61 @@ msgstr "Видалити запис"
 #: src/modules/action-menu/actions/record-actions/constants/DefaultActionsConfigV2.ts:115
 #: src/modules/action-menu/actions/record-actions/constants/DefaultActionsConfigV1.ts:75
 msgid "Delete records"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Видалити записи"
 
 #: src/pages/settings/developers/webhooks/components/SettingsDevelopersWebhookDetail.tsx:240
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx:236
 msgid "Delete this integration"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Видалити цю інтеграцію"
 
 #: src/pages/settings/developers/webhooks/components/SettingsDevelopersWebhookDetail.tsx:254
 #: src/pages/settings/developers/webhooks/components/SettingsDevelopersWebhookDetail.tsx:262
 msgid "Delete webhook"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Видалити вебхук"
 
 #: src/modules/action-menu/actions/record-actions/constants/WorkflowActionsConfig.ts:224
 msgid "Delete workflow"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Видалити workflow"
 
 #: src/modules/action-menu/actions/record-actions/constants/WorkflowActionsConfig.ts:240
 msgid "Delete workflows"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Видалити workflows"
 
 #: src/modules/settings/profile/components/DeleteWorkspace.tsx:36
 #: src/modules/settings/profile/components/DeleteWorkspace.tsx:54
 msgid "Delete workspace"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Видалити робочу область"
 
 #: src/modules/settings/profile/components/DeleteWorkspace.tsx:31
 msgid "Delete your whole workspace"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Видалити всю вашу робочу область"
 
 #: src/modules/object-record/object-sort-dropdown/components/ObjectSortDropdownButton.tsx:201
 #: src/modules/object-record/object-sort-dropdown/components/ObjectSortDropdownButton.tsx:214
 msgid "Descending"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              По спадаючій"
 
@@ -652,7 +660,8 @@ msgstr "\n"
 #: src/pages/settings/data-model/SettingsObjectFieldEdit.tsx:239
 #: src/pages/settings/data-model/SettingsObjectNewField/SettingsObjectNewFieldConfigure.tsx:266
 msgid "Description"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Опис"
 
@@ -661,7 +670,8 @@ msgstr "\n"
 #: src/modules/action-menu/actions/record-actions/constants/DefaultActionsConfigV2.ts:155
 #: src/modules/action-menu/actions/record-actions/constants/DefaultActionsConfigV2.ts:193
 msgid "Destroy"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Знищити"
 
@@ -671,7 +681,8 @@ msgstr "\n"
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeysNew.tsx:89
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx:169
 msgid "Developers"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Розробники"
 
@@ -679,13 +690,15 @@ msgstr "\n"
 #: src/modules/action-menu/actions/record-actions/constants/WorkflowActionsConfig.ts:97
 #: src/modules/action-menu/actions/record-actions/constants/WorkflowActionsConfig.ts:98
 msgid "Discard Draft"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Відмінити чернетку"
 
 #: src/modules/settings/data-model/fields/forms/date/components/SettingsDataModelFieldDateForm.tsx:48
 msgid "Display as relative date"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Показувати як відносну дату"
 
@@ -694,7 +707,8 @@ msgstr "\n"
 #: src/pages/settings/workspace/SettingsDomain.tsx:195
 #: src/pages/settings/workspace/SettingsCustomDomain.tsx:25
 msgid "Domain"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Домен"
 
@@ -705,25 +719,29 @@ msgstr ""
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeysNew.tsx:108
 #: src/pages/settings/developers/api-keys/SettingsDevelopersApiKeyDetail.tsx:223
 msgid "E.g. backoffice integration"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Наприклад, інтеграція з бекофісом"
 
 #: src/modules/object-record/record-board/record-board-column/utils/getAggregateOperationShortLabel.ts:29
 msgid "Earliest"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Найраніше"
 
 #: src/modules/object-record/record-board/record-board-column/utils/getAggregateOperationLabel.ts:31
 msgid "Earliest date"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Найраніша дата"
 
 #: src/pages/settings/SettingsBilling.tsx:158
 msgid "Edit billing interval"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Редагувати інтервал білінгу"
 
@@ -733,7 +751,8 @@ msgstr ""
 
 #: src/pages/settings/SettingsWorkspace.tsx:52
 msgid "Edit your subdomain name or set a custom domain."
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Редагуйте назву вашого субдомену або встановіть спеціальний домен."
 
@@ -743,38 +762,44 @@ msgstr "\n"
 #: src/pages/settings/roles/components/RoleAssignmentTableHeader.tsx:21
 #: src/pages/auth/PasswordReset.tsx:206
 msgid "Email"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Електронна адреса"
 
 #: src/pages/onboarding/ChooseYourPlan.tsx:89
 msgid "Email integration"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Інтеграція електронної пошти"
 
 #: src/modules/settings/accounts/components/SettingsAccountsBlocklistInput.tsx:55
 msgid "Email or domain is already in blocklist"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Електронна пошта або домен вже знаходяться в списку заблокованих"
 
 #: src/modules/settings/components/SettingsNavigationDrawerItems.tsx:77
 #: src/modules/settings/accounts/components/SettingsAccountsSettingsSection.tsx:45
 msgid "Emails"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Електронні листи"
 
 #: src/modules/settings/data-model/fields/forms/components/SettingsDataModelFieldIconLabelForm.tsx:167
 msgid "employees"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              співробітники"
 
 #: src/modules/settings/data-model/fields/forms/components/SettingsDataModelFieldIconLabelForm.tsx:137
 msgid "Employees"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Співробітники"
 
@@ -782,31 +807,36 @@ msgstr "\n"
 #: src/modules/object-record/record-board/record-board-column/utils/getAggregateOperationShortLabel.ts:22
 #: src/modules/activities/timeline-activities/rows/main-object/components/EventFieldDiff.tsx:62
 msgid "Empty"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Порожньо"
 
 #: src/pages/settings/developers/webhooks/components/SettingsDevelopersWebhookDetail.tsx:134
 msgid "Endpoint URL"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              URL-адреса ендпоінту"
 
 #: src/pages/settings/profile/appearance/components/LocalePicker.tsx:101
 msgid "English"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Англійська"
 
 #: src/pages/onboarding/ChooseYourPlan.tsx:157
 msgid "Enjoy a {withCreditCardTrialPeriodDuration}-days free trial"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Насолоджуйтеся {withCreditCardTrialPeriodDuration}-денним безкоштовним пробним періодом"
 
 #: src/pages/settings/security/SettingsSecurity.tsx:51
 msgid "Enterprise"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Підприємство"
 
@@ -824,13 +854,15 @@ msgstr ""
 
 #: src/pages/settings/developers/SettingsDevelopers.tsx:87
 msgid "Establish Webhook endpoints for notifications on asynchronous events."
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Встановіть ендпоінти вебхука для отримання сповіщень про асинхронні події."
 
 #: src/modules/settings/accounts/components/SettingsAccountsBlocklistSection.tsx:47
 msgid "Exclude the following people and domains from my email sync"
-msgstr "\n"
+msgstr ""
+"\n"
 "              \n"
 "              Виключити наступних людей та домени з синхронізації моєї електронної пошти"
 
@@ -2011,4 +2043,3 @@ msgstr "Ваш робочий простір"
 #: src/pages/settings/SettingsBilling.tsx:172
 msgid "Your workspace will be disabled"
 msgstr "Ваш робочий простір буде вимкнено"
-
