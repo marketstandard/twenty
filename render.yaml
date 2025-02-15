@@ -3,7 +3,7 @@ services:
   name: server
   runtime: image
   image:
-    url: twentycrm/twenty:latest
+    url: twentycrm/twenty:v0.42.2
   dockerCommand: "sh -c ./scripts/render-run.sh"
   autoDeploy: false
   plan: standard
