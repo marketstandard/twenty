@@ -70,7 +70,7 @@ services:
   plan: starter
   runtime: image
   image:
-    url: twentycrm/twenty-postgres:v0.32
+    url: twentycrm/twenty-postgres:v0.41.5
   autoDeploy: false
   disk:
     name: data
